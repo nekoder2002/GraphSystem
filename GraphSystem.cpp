@@ -6,12 +6,11 @@
 using namespace std;
 
 int main() {
-    PageRank pagerank("D:\\Code\\Study\\GraphSystem\\facebook_combined.txt",
+    PageRank pagerank("D:\\Code\\Study\\GraphSystem\\dataset\\facebook_combined.txt",
         "D:\\Code\\Study\\GraphSystem\\result.txt",
+        false,
         16); // 使用 16 个线程
 
     pagerank.run();
-
-    std::cout << "PageRank calcuate finished！" << std::endl;
     return 0;
 }
