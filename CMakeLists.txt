@@ -1,6 +1,4 @@
 ﻿# CMakeList.txt: GraphSystem 的 CMake 项目，在此处包括源代码并定义
-# 项目特定的逻辑。
-#
 cmake_minimum_required (VERSION 3.8)
 
 # 如果支持，请为 MSVC 编译器启用热重载。
@@ -12,10 +10,8 @@ endif()
 project ("GraphSystem")
 
 # 将源代码添加到此项目的可执行文件。
-add_executable (GraphSystem "GraphSystem.cpp" "GraphSystem.h" "PageRank.cpp" "PageRank.h" "GraphVisitor.cpp")
+add_executable (GraphSystem "GraphSystem.cpp" "GraphSystem.h" "component/PageRank.cpp" "component/PageRank.h" "component/GraphVisitor.h" "component/GraphVisitor.cpp" "struct/Graph.h" "struct/Graph.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET GraphSystem PROPERTY CXX_STANDARD 20)
 endif()
-
-# TODO: 如有需要，请添加测试并安装目标。

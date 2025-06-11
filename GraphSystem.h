@@ -1,7 +1,9 @@
-﻿// GraphSystem.h: 标准系统包含文件的包含文件
-// 或项目特定的包含文件。
-
-#pragma once
+﻿#pragma once
 
 #include <iostream>
-#include "PageRank.h"
+#include "component/PageRank.h"
+#include "component/GraphVisitor.h"
+#include "struct/Graph.h"
+
+using std::cerr;
+using std::endl;
