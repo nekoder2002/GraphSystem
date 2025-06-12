@@ -1,7 +1,3 @@
-以下是适用于你的并行图算法系统的 README 示例，涵盖功能、用法、依赖和示例：
-
----
-
 # GraphSystem
 
 本项目是一个支持稀疏图压缩存储与高效访问的并行图算法系统，支持命令行操作，内置并行 BFS、DFS 及 PageRank 等经典图算法的加速实现。
@@ -66,7 +62,3 @@ GraphSystem web-Google.txt pr_result.txt pagerank --threads 16
 ## 许可
 
 本项目仅供学习与研究使用。
-
----
-
-如需进一步扩展算法或功能，请参考各模块源码。
