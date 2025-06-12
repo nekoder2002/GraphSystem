@@ -15,7 +15,7 @@ void GraphVisitor::runBFS(int startNode) {
     }
 
     // 使用两层队列实现并行BFS
-    queue<int> globalQueue;
+    std::queue<int> globalQueue;
     globalQueue.push(startNode);
     visited[startNode].store(true, std::memory_order_relaxed);
 
@@ -23,7 +23,7 @@ void GraphVisitor::runBFS(int startNode) {
 
     while (!globalQueue.empty()) {
         // 当前层节点容器
-        vector<int> currentLevel;
+        std::vector<int> currentLevel;
         while (!globalQueue.empty()) {
             currentLevel.push_back(globalQueue.front());
             globalQueue.pop();
@@ -33,7 +33,7 @@ void GraphVisitor::runBFS(int startNode) {
 #pragma omp parallel num_threads(numThreads)
         {
             // 每个线程有自己的私有队列
-            vector<int> localQueue;
+           std::vector<int> localQueue;
 
 #pragma omp for schedule(dynamic, 100)
             for (int i = 0; i < currentLevel.size(); ++i) {
@@ -67,7 +67,7 @@ void GraphVisitor::runBFS(int startNode) {
     }
 
     double endTime = omp_get_wtime();
-    cout << "Parallel BFS completed in " << (endTime - startTime) << " seconds" << endl;
+    std::cout << "Parallel BFS completed in " << (endTime - startTime) << " seconds" << std::endl;
 }
 
 // 并行DFS实现
@@ -108,12 +108,12 @@ void GraphVisitor::runDFS(int startNode) {
     }
 
     double endTime = omp_get_wtime();
-    cout << "Parallel DFS completed in " << (endTime - startTime) << " seconds" << endl;
+    std::cout << "Parallel DFS completed in " << (endTime - startTime) << " seconds" << std::endl;
 }
 
 // 并行DFS辅助函数（非递归）
 void GraphVisitor::parallelDFSUtil(int startNode) {
-    stack<int> nodeStack;
+    std::stack<int> nodeStack;
     nodeStack.push(startNode);
     visited[startNode].store(true, std::memory_order_relaxed);
 

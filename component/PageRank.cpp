@@ -57,23 +57,23 @@ void PageRank::run() {
         r.swap(r2); // 更新r为新的PageRank向量
 
         if (normDiff <= tol) {
-            cout << "Converged after " << iter + 1 << " iterations." << endl;
+            std::cout << "Converged after " << iter + 1 << " iterations." << std::endl;
             break;
         }
     }
 
     if (iter == maxIter) {
-        cout << "Reached maximum iterations: " << maxIter << endl;
+        std::cout << "Reached maximum iterations: " << maxIter << std::endl;
     }
 
     double endTime = omp_get_wtime();
-    cout << "Parallel time: " << (endTime - startTime) << " seconds" << endl;
+    std::cout << "Parallel time: " << (endTime - startTime) << " seconds" << std::endl;
 
     // 输出结果
-    ofstream outFile(outputFile);
+    std::ofstream outFile(outputFile);
     for (int i = 0; i < maxNode; ++i) {
-        outFile << i << "," << r[i] << endl;
+        outFile << i << "," << r[i] << std::endl;
     }
     outFile.close();
-    cout << "PageRank calculation finished!" << endl;
+    std::cout << "PageRank calculation finished!" << std::endl;
 }

@@ -1,18 +1,18 @@
 #include "Graph.h"
 
-bool Graph::load(const string& filename, bool isDirected,int numThreads) {
+bool Graph::load(const std::string& filename, bool isDirected,int numThreads) {
     omp_set_num_threads(numThreads);
-    ifstream infile(filename);
+    std::ifstream infile(filename);
     if (!infile.is_open()) {
         return false;
     }
 
-    string line;
-    vector<pair<int, int>> edges;
+    std::string line;
+    std::vector<std::pair<int, int>> edges;
 
     // 读取所有边
     while (getline(infile, line)) {
-        istringstream iss(line);
+        std::istringstream iss(line);
         int u, v;
         if (iss >> u >> v) {
             edges.push_back({ u, v });
@@ -37,7 +37,7 @@ bool Graph::load(const string& filename, bool isDirected,int numThreads) {
     }
 
     // 构建CSR格式：按目标节点分组
-    vector<vector<int>> in_edges(maxNode); // 存储每个目标节点的源节点
+    std::vector<std::vector<int>> in_edges(maxNode); // 存储每个目标节点的源节点
     for (const auto& e : edges) {
         int u = e.first;
         int v = e.second;
